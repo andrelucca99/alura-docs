@@ -39,7 +39,6 @@ io.on("connection", (socket) => {
 
   socket.on("texto_editor", async ({ texto, nomeDocumento }) => {
     const atualizacao = await atualizaDocumento(nomeDocumento, texto);
-    console.log(atualizacao)
 
     if (atualizacao.modifiedCount) {
       socket.to(nomeDocumento).emit("texto_editor_clientes", texto);
